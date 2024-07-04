@@ -625,7 +625,7 @@ Value Search::Worker::search(
     // to save indentation, we list the condition in all code between here and there.
 
     // Check for an early TT cutoff
-    if (!excludedMove && ttData.depth > depth - (ttData.value <= beta) + (2 * PvNode)
+    if (!excludedMove && ttData.depth > depth - (ttData.value <= beta) + (5 * PvNode)
         && ttData.value != VALUE_NONE  // Can happen when !ttHit or when access race in probe()
         && (ttData.bound & (ttData.value >= beta ? BOUND_LOWER : BOUND_UPPER)))
     {
