@@ -917,6 +917,8 @@ Value Search::Worker::search(
         Eval::NNUE::hint_common_parent_position(pos, networks[numaAccessToken], refreshTable);
     }
 
+bool singularExtended = false;
+
 moves_loop:  // When in check, search starts here
 
     // Step 12. A small Probcut idea (~4 Elo)
@@ -1120,6 +1122,8 @@ moves_loop:  // When in check, search starts here
                                                   [type_of(pos.piece_on(move.to_sq()))]
                           > 3994)
                 extension = 1;
+
+            singularExtended = extension;
         }
 
         // Add extension to new depth
@@ -1151,6 +1155,9 @@ moves_loop:  // When in check, search starts here
         // Decrease reduction for PvNodes (~0 Elo on STC, ~2 Elo on LTC)
         if (PvNode)
             r--;
+
+        if (singularExtended && move != ttData.move)
+            r++;
 
         // These reduction adjustments have no proven non-linear scaling
 
