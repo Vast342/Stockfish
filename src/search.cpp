@@ -1115,7 +1115,7 @@ moves_loop:  // When in check, search starts here
 
                 // Otherwise, negatively extend proportional to how bad it is
                 else
-                    extension = std::clamp((singularBeta - value - 500) / 150, -5, 0);
+                    extension = std::clamp((singularBeta - value + 500) / 150, -5, 0);
             }
 
             // Extension for capturing the previous moved piece (~1 Elo at LTC)
