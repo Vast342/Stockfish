@@ -563,7 +563,7 @@ Value Search::Worker::search(
     Depth extension, newDepth;
     Value bestValue, value, eval, maxValue, probCutBeta;
     bool  givesCheck, improving, priorCapture, opponentWorsening;
-    bool  capture, moveCountPruning, ttCapture;
+    bool  capture, moveCountPruning, ttCapture, singularExtended;
     Piece movedPiece;
     int   moveCount, captureCount, quietCount;
 
@@ -916,8 +916,6 @@ Value Search::Worker::search(
 
         Eval::NNUE::hint_common_parent_position(pos, networks[numaAccessToken], refreshTable);
     }
-
-bool singularExtended = false;
 
 moves_loop:  // When in check, search starts here
 
