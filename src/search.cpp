@@ -1070,6 +1070,10 @@ moves_loop:  // When in check, search starts here
                 && ttData.depth >= depth - 3)
             {
                 Value singularBeta  = ttData.value - (54 + 76 * (ss->ttPv && !PvNode)) * depth / 64;
+                // Early Multicut?
+                if (singularBeta >= beta) 
+                    return singularBeta;
+                
                 Depth singularDepth = newDepth / 2;
 
                 ss->excludedMove = move;
