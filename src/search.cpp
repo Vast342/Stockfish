@@ -1112,6 +1112,10 @@ moves_loop:  // When in check, search starts here
                 // over current beta (~1 Elo)
                 else if (cutNode)
                     extension = -2;
+
+                // Otherwise, negatively extend proportional to how bad it is
+                else
+                    extension = std::clamp((singularBeta - value) / 150, -5, 0);
             }
 
             // Extension for capturing the previous moved piece (~1 Elo at LTC)
