@@ -566,7 +566,7 @@ Value Search::Worker::search(
     bool  capture, moveCountPruning, ttCapture;
     Piece movedPiece;
     int   moveCount, captureCount, quietCount;
-    bool  singularExtended = false
+    bool  singularExtended = false;
 
     // Step 1. Initialize node
     Worker* thisThread = this;
