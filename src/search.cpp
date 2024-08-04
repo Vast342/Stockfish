@@ -1091,7 +1091,7 @@ moves_loop:  // When in check, search starts here
                     extension = -2;
 
                 else 
-                    alpha = singularBeta;
+                    alpha = value;
             }
 
             // Extension for capturing the previous moved piece (~1 Elo at LTC)
