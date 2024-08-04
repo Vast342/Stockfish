@@ -1089,6 +1089,9 @@ moves_loop:  // When in check, search starts here
                 // over current beta (~1 Elo)
                 else if (cutNode)
                     extension = -2;
+
+                else 
+                    alpha = singularBeta;
             }
 
             // Extension for capturing the previous moved piece (~1 Elo at LTC)
