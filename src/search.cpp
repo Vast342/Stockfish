@@ -854,9 +854,10 @@ Value Search::Worker::search(
             movedPiece = pos.moved_piece(move);
             captured   = pos.piece_on(move.to_sq());
 
-
-            // Prefetch the TT entry for the resulting position
-            prefetch(tt.first_entry(pos.key_after(move)));
+            if(depth - 1 > 0) {
+                // Prefetch the TT entry for the resulting position
+                prefetch(tt.first_entry(pos.key_after(move)));
+            }
 
             ss->currentMove = move;
             ss->continuationHistory =
