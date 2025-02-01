@@ -1339,6 +1339,9 @@ moves_loop:  // When in check, search starts here
 
                     assert(depth > 0);
                     alpha = value;  // Update alpha! Always alpha < beta
+
+                    // Slight bonus to raising alpha
+                    update_quiet_histories(pos, ss, *this, move, moveCount);
                 }
             }
         }
