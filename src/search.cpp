@@ -1343,7 +1343,7 @@ moves_loop:  // When in check, search starts here
                     // Slight bonus to raising alpha
                     if (!capture)
                     {
-                        update_quiet_histories(pos, ss, *this, move, moveCount);
+                        update_continuation_histories(ss, movedPiece, move.to_sq(), moveCount);
                     }
                 }
             }
